@@ -1,3 +1,8 @@
-# MarkDown语法
+# MarkDown
 
-# MarkDown    = Mark
+  最近想学习一下写文章,大部分推荐使用MarkDown编辑器。于是学习记录一下。
+  
+## 标题
+\# 一级标题  
+# 一级标题  
+ 
