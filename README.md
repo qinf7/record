@@ -1,3 +1,3 @@
 # Record
 ------------
-[MarkDown官方文档](http://www.markdown.cn/)
+[MarkDown中文文档](http://www.markdown.cn/)
