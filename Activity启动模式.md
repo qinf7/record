@@ -1,5 +1,10 @@
 
 # Activity启动模式 #
+## 任务栈 ##
+ 在Android中是使用任务栈(Task)来管理Activity.任务栈具有后进先出的特性.而只有在处于栈顶的Activity才可以与用户进行交互.
+ 
+ 在一个应用程序不一定只有一个任务栈.
+
  在实际项目中我们根据特定需求为每个Activity指定合适的启动模式。
  
  在ActivityManifest中给<activity>标签指定android:launcherMode属性来指定。
@@ -20,4 +25,6 @@
   
       注:onSaveInstanceState是Activity在异常销毁时(如内存不足杀死)保存状态时所调用的一个方法,它执行在onPasue前onStop后.
       
-  退出生命周期如下：
+  退出生命周期如下：![standrd退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standrd%E9%80%80%E5%87%BA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+  
+  同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后,再执行FirstActivity的onStop、onDestory销毁Activity.
