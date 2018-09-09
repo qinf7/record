@@ -1,13 +1,19 @@
 
 # Activity启动模式 #
 ## 任务栈 ##
- 在Android中是使用任务栈(Task)来管理Activity.任务栈具有后进先出的特性.而只有在处于栈顶的Activity才可以与用户进行交互.
+ 在Android中是使用任务栈(Task)来管理Activity,根据Activitiy启动先后顺序插入任务栈中.任务栈具有后进先出的特性.而只有在处于栈顶的Activity才可以与用户进行交互.
  
- 在一个应用程序不一定只有一个任务栈.
+ 在ActivityManifest中给<activity>标签android:taskAffinity属性可以来指定栈,但需要配合Activity启动模式SingleTask或者SingleInstance.
+ 
+ 如果Activity没有显式指定taskAffinity属性,那么的它的这个属性就是Application的taskAffinity.如果Application也没有指定属性值,那么指就是包名.
+ 
+    注:一个应用程序不一定只有一个任务栈.
+    
+ ## 启动模式 ##
 
  在实际项目中我们根据特定需求为每个Activity指定合适的启动模式。
  
- 在ActivityManifest中给<activity>标签指定android:launcherMode属性来指定。
+ 在ActivityManifest中给<activity>标签android:launcherMode属性来指定。
      
  启动模式分为四种:Standrd、SingleTop、SingleTask和SingleInstance。
 
