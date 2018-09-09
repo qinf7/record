@@ -1,5 +1,5 @@
 
-# Activity启动模式 #
+# Activity启动模式与生命周期 #
 ## 任务栈 ##
  在Android中是使用任务栈(Task)来管理Activity,根据Activitiy启动先后顺序插入任务栈中.任务栈具有后进先出的特性.而只有在处于栈顶的Activity才可以与用户进行交互.
  
@@ -21,7 +21,7 @@
 
   Standrd是Activity中默认的启动模式。在不进行指定的情况下,所有的Activity都会自动使用该模式。
   
-  现在我建立了三个Activity:FirstActivity、SecondActivity,未指定启动模式。
+  现在我建立了两个个Activity:FirstActivity、SecondActivity,未指定启动模式。
    
   FirstActivity跳转SecondActivity,SecondActivity跳转FirstActivity.随后依次返回退出.
   
@@ -30,6 +30,8 @@
   我们看到FirstActivity先执行onPause,经过SecondActivity的onCreate,onStart,onResume.然后再执行FirstActivity的onSaveInstanceState和onStop.
   
       注:onSaveInstanceState是Activity在异常销毁时(如内存不足杀死)保存状态时所调用的一个方法,它执行在onPasue前onStop后.
+      
+      FirstActivity我们启动了两次,在Standrd启动模式下我们会创建两个不同的Activity实例入栈
       
   退栈生命周期如下：![standrd退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standrd%E9%80%80%E5%87%BA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
   
