@@ -34,3 +34,6 @@
   退栈生命周期如下：![standrd退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standrd%E9%80%80%E5%87%BA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
   
   同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后,再执行FirstActivity的onStop、onDestory销毁Activity.
+  
+* SingleTop(栈顶模式)
+  SingleTop:如果启动的Activity已经在栈顶了那么便会选择复用此Activity.如果不在栈顶那么便会正常启动Activity入栈.
