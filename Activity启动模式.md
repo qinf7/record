@@ -29,9 +29,8 @@
   
   我们看到FirstActivity先执行onPause,经过SecondActivity的onCreate,onStart,onResume. 然后再执行FirstActivity的onSaveInstanceState和onStop.
   
-> 注:onSaveInstanceState是Activity在异常销毁时(如内存不足杀死)保存状态时所调用的一个方法, 它执行在onPasue前onStop后.
- 
- FirstActivity我们启动了两次, 在Standrd启动模式下会创建两个不同的FirstActivity实例入栈
+> 注:onSaveInstanceState是Activity在异常销毁时(如内存不足杀死)保存状态时所调用的一个方法, 它执行在onPasue前onStop后.  
+  FirstActivity我们启动了两次, 在Standrd启动模式下会创建两个不同的FirstActivity实例入栈
       
   退栈生命周期如下：![standard退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
   
@@ -47,8 +46,7 @@
     
     1、FirstActivity启动FirstActivity, 并返回.Activity生命周期如下:![singletop-1](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
     
-> 注: 我们看到FirstActivity并没有重新创建, 指向是同一个实例. 执行顺序为:onPause、onNewIntent、onResume。
-      
+> 注: 我们看到FirstActivity并没有重新创建, 指向是同一个实例. 执行顺序为:onPause、onNewIntent、onResume.  
   onNewIntent是Activity进行复用时会触发的函数.
       
    2、FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity. 生命周期如下:![singletop-2](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
@@ -64,19 +62,17 @@
    
    FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity并退出. 生命周期如下:![singletask-1](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
    
-> 注:我们看到在SecondActivity再次启动FirstActivity时,FirstActivity进行了复用.
-      
-  生命周期:FirstActivity--OnNewIntent、onRestart、onStart、onResume, SecondActivity--onPause、onStop、onDestory.
-      
-  注意这里会有一个坑, 假设这时你SecondActivity再次启动FirstActivity时需要携带参数, 你会发现在FirstActivity中,getIntent()获取的值一直为null.
-      
+> 注:我们看到在SecondActivity再次启动FirstActivity时,FirstActivity进行了复用.  
+  生命周期:FirstActivity--OnNewIntent、onRestart、onStart、onResume, SecondActivity--onPause、onStop、onDestory.  
+  注意这里会有一个坑, 假设这时你SecondActivity再次启动FirstActivity时需要携带参数, 你会发现在FirstActivity中,getIntent()获取的值一直为null.  
   其实是因为Activity复用时会调用onNewIntent并传递一个新的Intent, 也就是刚才启动时候携带参数的Intent.
       
    在前面我们说过在SingleTask启动模式下, 我们是可以指定栈并生效的. 现在我们把SecondActivity启动模式设置为SingleTop并指定栈名, FirstActivity设置默认启动模式. 
    
    FirstActivity启动SecondActivity, SecondActivity启动FirstActivity. 生命周期如下:![singletask-2](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
 
- > 注: 我们看到第一个FirstActivity和SecondActivity是处于不同栈内的, SecondActivity启动的FirstActivity是处于同一栈内的. 在Android中一般情况下, 谁启动你的, 你就跟它处于同一个栈中.当然也有特殊情况,后面会说.
+ > 注: 我们看到第一个FirstActivity和SecondActivity是处于不同栈内的, SecondActivity启动的FirstActivity是处于同一栈内的.   
+   在Android中一般情况下, 谁启动你的, 你就跟它处于同一个栈中.当然也有特殊情况,后面会说.
       
  我们再看一下, 将FirstActivity启动模式也设置为SingleTask,SecondActivity保持不变.
     
