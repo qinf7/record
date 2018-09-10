@@ -87,3 +87,5 @@
    * SingleInstance(单栈模式)
 
     SingleInstance: 设置该模式会让Activity处于一个单独的任务栈中, 并且就算启动其他Activity也不会让其他Activity处于同栈内, 这个栈只会有该Activity一个实例.可自己通过taskAffinif来指定栈名,也可不指定系统会默认帮你创建一个.
+    
+    将SecondActivity启动模式设置为SingleInstance
