@@ -56,8 +56,29 @@
       
 * SingleTask(唯一实例模式)
    
-   SingleTask:设置该启动的Activity会在任务栈中只会保持一个实例,并且会将处于它后面的Activity给销毁.
+   SingleTask:Activity设置此启动模式,如果Activity在任务栈中存在实例,将会复用任务栈中Activity并销毁该Activity实例后入栈的Activity实例.
+   如果Activity在任务栈中无实例,那么便会创建一个实例入栈.
    
    还是刚才那两个Actviity.我们将FirstActivity的LauncherMode设置为SingleTask,SecondActivity保持不变.
    
-   FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity.并退出.
+   FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity.并退出.生命周期如下:![singletask-1](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
+   
+      注:我们看到在SecondActivity再次启动FirstActivity时,FirstActivity进行了复用.
+      
+      生命周期:FirstActivity--OnNewIntent、onRestart、onStart、onResume, SecondActivity--onPause、onStop、onDestory.
+      
+      注意这里会有一个坑,假设这时你SecondActivity再次启动FirstActivity时需要携带参数,你会发现在FirstActivity中,getIntent()获取的值一直为null。
+      
+      其实是因为Activity复用时会调用onNewIntent并传递一个新的Intent,也就是刚才启动时候携带参数的Intent。
+      
+   在前面我们说过在SingleTask启动模式下,我们是可以指定栈并生效的.现在我们把SecondActivity启动模式设置为SingleTop并指定栈名,FirstActivity设置默认启动模式. 
+   
+   FirstActivity启动SecondActivity,SecondActivity启动FirstActivity。生命周期如下:![singletask-2](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+
+      注: 我们看到第一个FirstActivity和SecondActivity是处于不同栈内的,SecondActivity启动的FirstActivity是处于同一栈内的.在Android中一般情况下,谁启动你的,你就属于跟它同一个栈中.当然也有特殊情况,后面会说.
+      
+    我们再看一下,将FirstActivity启动模式也设置为SingleTask,SecondActivity保持不变。
+    
+    还是按照刚才的启动顺序看一下生命周期:![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+    
+      注:我们看到这时SecondActivity启动FirstActivity并没有重新创建实例且不属于同栈内,而是复用了原来FirstActivity.
