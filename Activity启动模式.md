@@ -38,6 +38,7 @@
   同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后,再执行FirstActivity的onStop、onDestory销毁Activity.
   
 * SingleTop(栈顶模式)
+
   SingleTop:如果启动的Activity已经在栈顶了那么便会选择复用此Activity.如果不在栈顶那么便会正常启动Activity入栈退栈.
   
   还是刚才那两个Actviity.我们将FirstActivity的LauncherMode设置为SingleTop,SecondActivity保持不变.
