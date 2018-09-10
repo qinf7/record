@@ -15,13 +15,13 @@
  
  在ActivityManifest中通过给<activity>标签的android:launcherMode属性来指定启动模式。
      
- 启动模式分为四种:Standard、SingleTop、SingleTask和SingleInstance。
+ 启动模式分为四种:Standard、SingleTop、SingleTask和SingleInstance.
 
 * Standard(标准模式)
 
-  Standard是Activity中默认的启动模式。在不进行指定的情况下,所有的Activity都会自动使用该模式。
+  Standard是Activity中默认的启动模式。在不进行指定的情况下,所有的Activity都会自动使用该模式.
   
-  现在我建立了两个Activity:FirstActivity、SecondActivity,未指定启动模式。
+  现在我建立了两个Activity:FirstActivity、SecondActivity,未指定启动模式.
    
   FirstActivity跳转SecondActivity,SecondActivity跳转FirstActivity.随后依次返回退出.
   
@@ -38,11 +38,26 @@
   同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后,再执行FirstActivity的onStop、onDestory销毁Activity.
   
 * SingleTop(栈顶模式)
-  SingleTop:如果启动的Activity已经在栈顶了那么便会选择复用此Activity.如果不在栈顶那么便会正常启动Activity入栈.
+  SingleTop:如果启动的Activity已经在栈顶了那么便会选择复用此Activity.如果不在栈顶那么便会正常启动Activity入栈退栈.
   
   还是刚才那两个Actviity.我们将FirstActivity的LauncherMode设置为SingleTop,SecondActivity保持不变.
   
   我们分两种情况进行查看生命周期:
     
-    FirstActivity启动FirstActivity,并返回.如图:
+    1、FirstActivity启动FirstActivity,并返回.Activity生命周期如下:![singletop-1](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
     
+      注: 我们看到FirstActivity并没有重新创建,指向是同一个实例.执行顺序为:onPause、onNewIntent、onResume。
+      
+      onNewIntent是Activity进行复用时会触发的函数.
+      
+   2、FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity.生命周期如下:![singletop-2](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+    
+      注: 我们看到FirstActivity设置SingleTop由于并没有处于栈顶,SecondActivity启动时又创建了一个FirstActivity实例.
+      
+* SingleTask(唯一实例模式)
+   
+   SingleTask:设置该启动的Activity会在任务栈中只会保持一个实例,并且会将处于它后面的Activity给销毁.
+   
+   还是刚才那两个Actviity.我们将FirstActivity的LauncherMode设置为SingleTask,SecondActivity保持不变.
+   
+   FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity.并退出.
