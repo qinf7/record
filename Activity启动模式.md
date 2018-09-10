@@ -25,7 +25,7 @@
    
   FirstActivity跳转SecondActivity,SecondActivity跳转FirstActivity.随后依次返回退出.
   
-  进栈生命周期如下: ![standard启动生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standrd%E5%90%AF%E5%8A%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+  进栈生命周期如下: ![standard启动生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
   
   我们看到FirstActivity先执行onPause,经过SecondActivity的onCreate,onStart,onResume.然后再执行FirstActivity的onSaveInstanceState和onStop.
   
@@ -33,7 +33,7 @@
       
       FirstActivity我们启动了两次,在Standrd启动模式下会创建两个不同的FirstActivity实例入栈
       
-  退栈生命周期如下：![standard退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standrd%E9%80%80%E5%87%BA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+  退栈生命周期如下：![standard退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
   
   同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后,再执行FirstActivity的onStop、onDestory销毁Activity.
   
@@ -79,6 +79,6 @@
       
     我们再看一下,将FirstActivity启动模式也设置为SingleTask,SecondActivity保持不变。
     
-    还是按照刚才的启动顺序看一下生命周期:![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+    还是按照刚才的启动顺序看一下生命周期:![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
     
       注:我们看到这时SecondActivity启动FirstActivity并没有重新创建实例且不属于同栈内,而是复用了原来FirstActivity.
