@@ -83,3 +83,7 @@
     还是按照刚才的启动顺序看一下生命周期:![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
     
       注:我们看到这时SecondActivity启动FirstActivity并没有重新创建实例且不属于同栈内, 而是复用了原来FirstActivity.
+      
+   * SingleInstance(单栈模式)
+
+    SingleInstance: 设置该模式会让Activity处于一个单独的任务栈中, 并且就算启动其他Activity也不会让其他Activity处于同栈内, 这个栈只会有该Activity一个实例.可自己通过taskAffinif来指定栈名,也可不指定系统会默认帮你创建一个.
