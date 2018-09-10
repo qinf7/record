@@ -19,7 +19,7 @@
 
 * Standard(标准模式)
 
-  Standard是Activity中默认的启动模式. 在不进行指定的情况下, 所有的Activity都会自动使用该模式.
+ > Standard是Activity中默认的启动模式. 在不进行指定的情况下, 所有的Activity都会自动使用该模式.
   
   现在我建立了两个Activity: FirstActivity、SecondActivity, 未指定启动模式.
    
