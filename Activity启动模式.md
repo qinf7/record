@@ -81,7 +81,8 @@
       
      我们再看一下, 将FirstActivity启动模式也设置为SingleTask,SecondActivity保持不变.
     
-     还是按照刚才的启动顺序看一下生命周期:![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
+     还是按照刚才的启动顺序看一下生命周期:![singletask-3]
+     (https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
     
       注:我们看到这时SecondActivity启动FirstActivity并没有重新创建实例且不属于同栈内, 而是复用了原来FirstActivity.
       
