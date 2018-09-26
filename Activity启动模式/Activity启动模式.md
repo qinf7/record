@@ -25,7 +25,7 @@
    
   FirstActivity跳转SecondActivity, SecondActivity跳转FirstActivity. 随后依次返回退出.
   
-  进栈生命周期如下: ![standard启动生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
+  进栈生命周期如下: ![standard启动生命周期](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
   
   我们看到FirstActivity先执行onPause,经过SecondActivity的onCreate,onStart,onResume. 然后再执行FirstActivity的onSaveInstanceState和onStop.
   
@@ -33,7 +33,7 @@
       
       FirstActivity我们启动了两次, 在Standrd启动模式下会创建两个不同的FirstActivity实例入栈
       
-  退栈生命周期如下：![standard退出生命周期](https://raw.githubusercontent.com/qinf1996/record/master/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+  退栈生命周期如下：![standard退出生命周期](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/standard%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
   
   同样我们看到最上层的FirstActivity先执行onPause,等SecondActivity执行onRestart、onStart、onResume后, 再执行FirstActivity的onStop、onDestory销毁Activity.
   
@@ -45,12 +45,12 @@
   
      我们分两种情况进行查看生命周期:
     
-     1、FirstActivity启动FirstActivity, 并返回.Activity生命周期如下:![singletop-1](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
+     1、FirstActivity启动FirstActivity, 并返回.Activity生命周期如下:![singletop-1](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
     
       注: 我们看到FirstActivity并没有重新创建, 指向是同一个实例. 执行顺序为:onPause、onNewIntent、onResume.  
       onNewIntent是Activity进行复用时会触发的函数.
       
-     2、FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity. 生命周期如下:![singletop-2](https://raw.githubusercontent.com/qinf1996/record/master/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+     2、FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity. 生命周期如下:![singletop-2](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singletop%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
     
       注: 我们看到FirstActivity设置SingleTop由于并没有处于栈顶, SecondActivity启动时又创建了一个FirstActivity实例.
       
