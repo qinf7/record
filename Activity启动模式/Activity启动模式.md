@@ -61,7 +61,7 @@
    
     还是刚才那两个Actviity. 我们将FirstActivity的LauncherMode设置为SingleTask, SecondActivity保持不变.
    
-    FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity并退出. 生命周期如下:![singletask-1](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
+    FirstActivity启动SecondActivity,SecondActivity又启动FirstActivity并退出. 生命周期如下:![singletask-1](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
    
       注:我们看到在SecondActivity再次启动FirstActivity时,FirstActivity进行了复用.  
       
@@ -73,7 +73,7 @@
       
     在前面我们说过在SingleTask启动模式下, 我们是可以指定栈并生效的. 现在我们把SecondActivity启动模式设置为SingleTop并指定栈名, FirstActivity设置默认启动模式. 
    
-    FirstActivity启动SecondActivity, SecondActivity启动FirstActivity. 生命周期如下:![singletask-2](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+    FirstActivity启动SecondActivity, SecondActivity启动FirstActivity. 生命周期如下:![singletask-2](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
 
       注: 我们看到第一个FirstActivity和SecondActivity是处于不同栈内的, SecondActivity启动的FirstActivity是处于同一栈内的.  
     
@@ -82,7 +82,7 @@
      我们再看一下, 将FirstActivity启动模式也设置为SingleTask,SecondActivity保持不变.
     
      还是按照刚才的启动顺序看一下生命周期:
-     ![singletask-3](https://raw.githubusercontent.com/qinf1996/record/master/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
+     ![singletask-3](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singletask%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-3.png)
     
       注:我们看到这时SecondActivity启动FirstActivity并没有重新创建实例且不属于同栈内, 而是复用了原来FirstActivity.
       
@@ -91,11 +91,11 @@
    > SingleInstance: 设置该模式会让Activity处于一个单独的任务栈中, 且该栈只会有这一个实例. 可自己通过taskAffinif来指定栈名, 也可不指定系统会默认帮你创建一个.
     
      将SecondActivity启动模式设置为SingleInstance. FirstActivity启动SecondActivity, SecondActivity再启动FirstActivity.
-     生命周期如下:![singleinstance-1](https://raw.githubusercontent.com/qinf1996/record/master/singleinstance%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+     生命周期如下:![singleinstance-1](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singleinstance%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-1.png)
     
        注:我们看到SecondActivity就算启动FirstActivity, FirstActivity也并没有和SecondActivity处于同一个栈中.
       
-     再模拟一个情景,FirstActivity默认启动模式, SecondActivity设置SingleInstance启动模式并指定栈名, ThirdActivity设置SingleTask启动模式并指定与SecondActivity相同栈名. 生命周期如下: ![singleinstance-2](https://raw.githubusercontent.com/qinf1996/record/master/singleinstance%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
+     再模拟一个情景,FirstActivity默认启动模式, SecondActivity设置SingleInstance启动模式并指定栈名, ThirdActivity设置SingleTask启动模式并指定与SecondActivity相同栈名. 生命周期如下: ![singleinstance-2](https://github.com/qinf1996/record/blob/master/Activity%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/singleinstance%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F-2.png)
 
        注:就算我们将SecondActivity和ThirdActivity指定了同一个栈名,它两还是并没有处于同一个栈内.
  
