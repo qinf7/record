@@ -1,10 +1,11 @@
 # Record
 ------------
-[MarkDown中文文档]
-(http://www.markdown.cn/)
+[MarkDown中文文档](http://www.markdown.cn/)
 
 [ADB常用命令]
 (https://github.com/mzlogin/awesome-adb)
+
+
 [Design-Tools]
 (https://github.com/jobbole/awesome-design-cn)
 
