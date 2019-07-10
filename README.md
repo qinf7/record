@@ -8,7 +8,6 @@
 
 [清华大学计算机系课程攻略](https://github.com/PKUanonym/REKCARC-TSC-UHT)
 
-[计算机科学速成课(视频)](https://www.yuque.com/computer/crush-course)
 
 [编程中文电子书](https://github.com/justjavac/free-programming-books-zh_CN)
 
